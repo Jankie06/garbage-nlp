@@ -26,48 +26,49 @@ import string
 # light_magenta	on_light_magenta
 # light_cyan	on_light_cyan
 
-# CC coordinating conjunction
-# CD cardinal digit
-# DT determiner
-# EX existential there(like: “there is ” … think of it like “there exists”)
-# FW foreign word
-# IN preposition/subordinating conjunction
-# JJ adjective – ‘big’
-# JJR adjective, comparative – ‘bigger’
-# JJS adjective, superlative – ‘biggest’
-# LS list marker 1)
-# MD modal – could, will
-# NN noun, singular ‘- desk’
-# NNS noun plural – ‘desks’
-# NNP proper noun, singular – ‘Harrison’
-# NNPS proper noun, plural – ‘Americans’
-# PDT predeterminer – ‘all the kids’
-# POS possessive ending parent’s
-# PRP personal pronoun –  I, he, she
-# PRP$ possessive pronoun – my, his, hers
-# RB adverb – very, silently,
-# RBR adverb, comparative – better
-# RBS adverb, superlative – best
-# RP particle – give up
-# TO – to go ‘to’ the store.
-# UH interjection – errrrrrrrm
-# VB verb, base form – take
-# VBD verb, past tense – took
-# VBG verb, gerund/present participle – taking
-# VBN verb, past participle – taken
-# VBP verb, sing. present, non-3d – take
-# VBZ verb, 3rd person sing. present – takes
-# WDT wh-determiner – which
-# WP wh-pronoun – who, what
-# WP$ possessive wh-pronoun, eg - whose
-# WRB wh-adverb, eg - where, when
+# CC            coordinating conjunction
+# CD            cardinal digit
+# DT            determiner
+# EX            existential there(like: “there is ” … think of it like “there exists”)
+# FW            foreign word
+# IN            preposition/subordinating conjunction
+# JJ            adjective – ‘big’
+# JJR           adjective, comparative – ‘bigger’
+# JJS           adjective, superlative – ‘biggest’
+# LS            list marker 1)
+# MD            modal – could, will
+# NN            noun, singular ‘- desk’
+# NNS           noun plural – ‘desks’
+# NNP           proper noun, singular – ‘Harrison’
+# NNPS          proper noun, plural – ‘Americans’
+# PDT           predeterminer – ‘all the kids’
+# POS           possessive ending parent’s
+# PRP           personal pronoun –  I, he, she
+# PRP$          possessive pronoun – my, his, hers
+# RB            adverb – very, silently,
+# RBR           adverb, comparative – better
+# RBS           adverb, superlative – best
+# RP            particle – give up
+# TO            to go ‘to’ the store.
+# UH            interjection – errrrrrrrm
+# VB            verb, base form – take
+# VBD           verb, past tense – took
+# VBG           verb, gerund/present participle – taking
+# VBN           verb, past participle – taken
+# VBP           verb, sing. present, non-3d – take
+# VBZ           verb, 3rd person sing. present – takes
+# WDT           wh-determiner – which
+# WP            wh-pronoun – who, what
+# WP$           possessive wh-pronoun, eg - whose
+# WRB           wh-adverb, eg - where, when
 
 
 URL = r"https://gist.githubusercontent.com/ZohebAbai/513218c3468130eacff6481f424e4e64/raw/b70776f341a148293ff277afa0d0302c8c38f7e2/gist_stopwords.txt"
 currentToken = "ERROR: Unknown"
 ps = PorterStemmer()
 lemmatizer = WordNetLemmatizer()
-
+input_ = [0]
+output_ = [0]
 
 def setup():
     global STOPWORDS
@@ -164,11 +165,14 @@ def tag():
 
     # Add tags and identifiers
     currentToken = nltk.pos_tag(currentToken)
-    print(currentToken)
-    # TODO Print specific identiyer!
-    print(currentToken[0][1])
-    time.sleep(20)
 
+def varSave():
+    unzippedTokens = [i for i, j in currentToken],
+    [j for i, j in currentToken]
+    input_.append(unzippedTokens[1])
+
+def responseLoop():
+    print("yes")
 
 def mainLoop():
     # Clear
@@ -188,6 +192,13 @@ def mainLoop():
 
     # Phase 5: Tag words
     tag()
+
+    # Phase 6: Save words and identifiers
+    # save()  TODO Skip for now
+    varSave() # Temporary fix
+
+    # Phase 7: Start processing a response
+    responseLoop()
 
 
 # ---------------------------------  Program Start  --------------------------------- #
